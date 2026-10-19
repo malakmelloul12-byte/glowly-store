@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glowly Beauty & More | متجر التجميل والعناية</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Notification / Toast -->
+    <div id="toast" class="toast hidden"></div>
+
+    <!-- Top Announcement Bar -->
+    <div class="announcement-bar">
+        <span>✦ توصيل مجاني للطلبات فوق 500 درهم | إرجاع سهل خلال 30 يوم ✦</span>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="navbar">
+        <div class="nav-container">
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="القائمة">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <a href="#" class="logo">
+                Glowly <span class="logo-heart">♡</span>
+                <span class="logo-sub">BEAUTY & MORE</span>
+            </a>
+
+            <nav class="nav-links" id="navLinks">
+                <a href="#home" class="nav-link active">الرئيسية</a>
+                <a href="#shop" class="nav-link" data-category="all">المتجر</a>
+                <a href="#collections" class="nav-link">المجموعات</a>
+                <a href="#about" class="nav-link">عن المتجر</a>
+                <a href="#contact" class="nav-link">تواصل معنا</a>
+            </nav>
+
+            <div class="nav-actions">
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" id="searchInput" placeholder="ابحثي عن منتج...">
+                </div>
+
+                <button class="icon-btn" id="accountBtn" title="الحساب">
+                    <i class="fa-regular fa-user"></i>
+                </button>
+
+                <button class="icon-btn cart-btn" id="cartToggleBtn" title="سلة التسوق">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="cart-badge" id="cartBadge">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Account Modal -->
+    <div class="modal" id="accountModal">
+        <div class="modal-content text-center">
+            <button class="close-modal">&times;</button>
+            <i class="fa-regular fa-circle-user modal-icon"></i>
+            <h3>حسابي</h3>
+            <p class="text-muted">ميزة تسجيل الدخول ستكون متاحة قريباً! يمكنك التسوق والطلب عبر WhatsApp الآن مباشرة.</p>
+            <button class="btn btn-primary" onclick="closeModal('accountModal')">حسناً</button>
+        </div>
+    </div>
+
+    <!-- Main Content Container -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section" id="home">
+            <div class="hero-content">
+                <span class="hero-subtitle">جمالك • عنايتك • ثقتك</span>
+                <h1 class="hero-title">جمالكِ هو <br><span class="script-font">أولويتنا</span> ♡</h1>
+                <p class="hero-desc">اكتشفي تشكيلتنا المميزة من المكياج، منتجات العناية بالبشرة والجمال لتطلّي بأجمل مظهر كل يوم.</p>
+                <a href="#shop" class="btn btn-primary">تسوقي الآن <i class="fa-solid fa-arrow-left"></i></a>
+            </div>
+            <div class="hero-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1000&q=80" alt="Glowly Beauty Banner" class="hero-img" loading="lazy">
+                <div class="hero-badge">Look Good<br>Feel Good ♡</div>
+            </div>
+        </section>
+
+        <!-- Categories Section -->
+        <section class="categories-section container">
+            <h2 class="section-title text-center">الأقسام الرئيسية</h2>
+            <div class="categories-grid">
+                <div class="category-card" data-category="makeup">
+                    <div class="category-img-holder">
+                        <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=300&q=80" alt="مكياج">
+                    </div>
+                    <h4>المكياج</h4>
+                    <span class="category-link">تسوقي الآن &larr;</span>
+                </div>
+                <div class="category-card" data-category="skincare">
+                    <div class="category-img-holder">
+                        <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=300&q=80" alt="العناية بالبشرة">
+                    </div>
+                    <h4>العناية بالبشرة</h4>
+                    <span class="category-link">تسوقي الآن &larr;</span>
+                </div>
+                <div class="category-card" data-category="fragrance">
+                    <div class="category-img-holder">
+                        <img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=300&q=80" alt="العطور">
+                    </div>
+                    <h4>العطور</h4>
+                    <span class="category-link">تسوقي الآن &larr;</span>
+                </div>
+                <div class="category-card" data-category="hair">
+                    <div class="category-img-holder">
+                        <img src="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&w=300&q=80" alt="إكسسوارات الشعر">
+                    </div>
+                    <h4>إكسسوارات الشعر</h4>
+                    <span class="category-link">تسوقي الآن &larr;</span>
+                </div>
+                <div class="category-card" data-category="nails">
+                    <div class="category-img-holder">
+                        <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=300&q=80" alt="الأظافر">
+                    </div>
+                    <h4>الأظافر</h4>
+                    <span class="category-link">تسوقي الآن &larr;</span>
+                </div>
+                <div class="category-card" data-category="tools">
+                    <div class="category-img-holder">
+                        <img src="https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?auto=format&fit=crop&w=300&q=80" alt="أدوات التجميل">
+                    </div>
+                    <h4>أدوات التجميل</h4>
+                    <span class="category-link">تسوقي الآن &larr;</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Service Features Bar -->
+        <section class="features-bar">
+            <div class="container features-grid">
+                <div class="feature-item">
+                    <i class="fa-solid fa-truck-fast"></i>
+                    <div>
+                        <h4>توصيل مجاني</h4>
+                        <p>للطلبات فوق 500 درهم</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <div>
+                        <h4>الدفع عند الاستلام</h4>
+                        <p>تفقدي طلبك قبل الدفع</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <i class="fa-solid fa-rotate-left"></i>
+                    <div>
+                        <h4>إرجاع خلال 30 يوم</h4>
+                        <p>تسوق بلا قلق</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <i class="fa-solid fa-headset"></i>
+                    <div>
+                        <h4>دعم 24/7</h4>
+                        <p>نحن هنا لمساعدتك دائماً</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section class="products-section container" id="shop">
+            <div class="section-header">
+                <div>
+                    <span class="script-font tag-line">المفضلات لديكم ♡</span>
+                    <h2>الأكثر مبيعاً</h2>
+                </div>
+                <div class="filter-sort-controls">
+                    <select id="categoryFilter" class="custom-select">
+                        <option value="all">كل الأقسام</option>
+                        <option value="makeup">المكياج</option>
+                        <option value="skincare">العناية بالبشرة</option>
+                        <option value="fragrance">العطور</option>
+                        <option value="hair">إكسسوارات الشعر</option>
+                        <option value="nails">الأظافر</option>
+                        <option value="tools">أدوات التجميل</option>
+                    </select>
+                    <select id="sortBy" class="custom-select">
+                        <option value="default">الترتيب الافتراضي</option>
+                        <option value="price-asc">السعر: من الأقل للأعلى</option>
+                        <option value="price-desc">السعر: من الأعلى للأقل</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Products Grid Container -->
+            <div class="products-grid" id="productsGrid">
+                <!-- Data populated dynamically via script.js -->
+            </div>
+        </section>
+
+        <!-- Promotional Banners Section -->
+        <section class="promo-section container" id="collections">
+            <div class="promo-card promo-makeup">
+                <div class="promo-text">
+                    <h3>أساسيات المكياج</h3>
+                    <p>كل ما تحتاجينه لإطلالة ساحرة ومميزة.</p>
+                    <button class="btn btn-primary filter-btn-trigger" data-cat="makeup">تسوقي المكياج &larr;</button>
+                </div>
+                <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=600&q=80" alt="أساسيات المكياج">
+            </div>
+
+            <div class="promo-card promo-skincare">
+                <div class="promo-text">
+                    <h3>مجموعة العناية بالبشرة</h3>
+                    <p>بشرة صحية ومشرقة في كل الأوقات.</p>
+                    <button class="btn btn-primary filter-btn-trigger" data-cat="skincare">تسوقي المجموعة &larr;</button>
+                </div>
+                <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=600&q=80" alt="مجموعة العناية">
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about-section container" id="about">
+            <div class="about-grid">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80" alt="عن Glowly">
+                </div>
+                <div class="about-text">
+                    <span class="script-font tag-line">عالم من الأناقة ♡</span>
+                    <h2>عن Glowly Beauty & More</h2>
+                    <p>نحن نؤمن بأن الجمال يبدأ من الثقة بالنفس. هدفنا هو تقديم أرقى منتجات التجميل والعناية بالبشرة ذات الجودة العالية لتستمتعي بروتين جمال يومي فاخر وبأسعار في المتناول.</p>
+                    <ul class="about-highlights">
+                        <li><i class="fa-solid fa-check"></i> منتجات أصلية ومضمونة 100%</li>
+                        <li><i class="fa-solid fa-check"></i> اختيار دقيق لأفضل المكونات والماركات</li>
+                        <li><i class="fa-solid fa-check"></i> خدمة زبناء سريعة ومهتمة بجميع استفساراتكم</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section class="newsletter-section">
+            <div class="container text-center">
+                <span class="script-font font-large">ابقَي على اطلاع ♡</span>
+                <h2>اشتركي في نشرتنا البريدية</h2>
+                <p>كوني الأولى لمعرفة الجديد، العروض الحصرية والنصائح التجميلية!</p>
+                <form id="newsletterForm" class="newsletter-form">
+                    <input type="email" id="newsletterEmail" placeholder="أدخلي بريدك الإلكتروني" required>
+                    <button type="submit" class="btn btn-primary">اشتراك <i class="fa-solid fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section container" id="contact">
+            <h2 class="section-title text-center">تواصل معنا</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>معلومات الاتصال</h3>
+                    <p>سعداء بخدمتك دائماً! لا تترددي في التواصل معنا عبر الوسائل التالية:</p>
+                    <div class="info-item">
+                        <i class="fa-solid fa-phone"></i>
+                        <span>الهاتف / واتساب: +212 600-000000</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>البريد الإلكتروني: contact@glowlybeauty.com</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>المقر: الدار البيضاء، المغرب</span>
+                    </div>
+                    <div class="social-links-contact">
+                        <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="https://tiktok.com" target="_blank" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="https://pinterest.com" target="_blank" aria-label="Pinterest"><i class="fa-brands fa-pinterest"></i></a>
+                    </div>
+                </div>
+
+                <form id="contactForm" class="contact-form">
+                    <h3>أرسلي لنا رسالة</h3>
+                    <div class="form-group">
+                        <input type="text" id="contactName" class="form-input" placeholder="الاسم الكامل" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="contactEmail" class="form-input" placeholder="البريد الإلكتروني" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="contactMessage" class="form-input" rows="4" placeholder="رسالتك..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary full-width">إرسال الرسالة</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Side Cart Drawer -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <aside class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h3>سلة التسوق (<span id="cartCount">0</span>)</h3>
+            <button class="close-cart" id="closeCartBtn">&times;</button>
+        </div>
+
+        <div class="cart-items" id="cartItemsContainer">
+            <!-- Items populated by JavaScript -->
+        </div>
+
+        <div class="cart-footer">
+            <div class="cart-summary-line">
+                <span>المجموع الفرعي:</span>
+                <span id="cartSubtotal">0.00 DH</span>
+            </div>
+            <div class="cart-summary-line">
+                <span>الشحن:</span>
+                <span id="cartShipping">سيتم حسابه عند الطلب</span>
+            </div>
+            <div class="cart-summary-line total-line">
+                <span>الإجمالي:</span>
+                <span id="cartTotal">0.00 DH</span>
+            </div>
+
+            <button class="btn btn-primary full-width" id="proceedCheckoutBtn">متابعة إتمام الطلب &larr;</button>
+        </div>
+    </aside>
+
+    <!-- Checkout Modal -->
+    <div class="modal modal-large" id="checkoutModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeCheckoutBtn">&times;</button>
+            <h2 class="text-center">إتمام الطلب</h2>
+            
+            <div class="checkout-grid">
+                <!-- Customer Details Form -->
+                <form id="checkoutForm" class="checkout-form">
+                    <h3>معلومات الشحن والتسليم</h3>
+                    
+                    <div class="form-group">
+                        <label for="custName">الاسم الكامل *</label>
+                        <input type="text" id="custName" class="form-input" placeholder="مثال: مريم العلي" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="custPhone">رقم الهاتف المغربي *</label>
+                        <input type="tel" id="custPhone" class="form-input" placeholder="0612345678" required>
+                        <small class="text-muted">نقبل الأرقام المبتدئة بـ 06, 07 أو 05</small>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="custCity">المدينة *</label>
+                            <input type="text" id="custCity" class="form-input" placeholder="الدار البيضاء، الرباط..." required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="custAddress">العنوان الكامل *</label>
+                        <textarea id="custAddress" class="form-input" rows="2" placeholder="اسم الحي، الشارع، رقم المنزل..." required></textarea>
+                    </div>
+
+                    <h3>طريقة الدفع</h3>
+                    <div class="payment-methods">
+                        <label class="payment-option selected">
+                            <input type="radio" name="paymentMethod" value="cod" checked>
+                            <div class="option-details">
+                                <strong>الدفع عند الاستلام (COD)</strong>
+                                <span>ادفع نقداً عند استلام طلبك</span>
+                            </div>
+                        </label>
+
+                        <label class="payment-option disabled">
+                            <input type="radio" name="paymentMethod" value="card" disabled>
+                            <div class="option-details">
+                                <strong>الدفع بالبطاقة البنكية (غير متاح حالياً)</strong>
+                                <span>ستتوفر بوابة الدفع الإلكتروني قريباً</span>
+                            </div>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn btn-success full-width checkout-submit-btn">
+                        <i class="fa-brands fa-whatsapp"></i> تأكيد الطلب عبر WhatsApp
+                    </button>
+                </form>
+
+                <!-- Order Summary -->
+                <div class="order-summary-box">
+                    <h3>ملخص الطلب</h3>
+                    <div id="checkoutSummaryItems" class="summary-items-list">
+                        <!-- Summary list -->
+                    </div>
+                    <div class="summary-divider"></div>
+                    <div class="cart-summary-line">
+                        <span>المجموع الفرعي:</span>
+                        <span id="summarySubtotal">0.00 DH</span>
+                    </div>
+                    <div class="cart-summary-line">
+                        <span>مصاريف الشحن:</span>
+                        <span id="summaryShipping">35.00 DH</span>
+                    </div>
+                    <div class="cart-summary-line total-line">
+                        <span>الإجمالي النهائى:</span>
+                        <span id="summaryTotal">0.00 DH</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <a href="#" class="logo footer-logo">
+                    Glowly <span class="logo-heart">♡</span>
+                </a>
+                <p>عالمك المتكامل لمنتجات التجميل والعناية الفاخرة. نسعى دائماً لتقديم الأفضل لجمالكِ.</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>روابط سريعة</h4>
+                <ul>
+                    <li><a href="#home">الرئيسية</a></li>
+                    <li><a href="#shop">المتجر</a></li>
+                    <li><a href="#collections">المجموعات</a></li>
+                    <li><a href="#about">عن المتجر</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>خدمة الزبناء</h4>
+                <ul>
+                    <li><a href="#contact">تواصل معنا</a></li>
+                    <li><a href="#contact">الشحن والتوصيل</a></li>
+                    <li><a href="#contact">سياسة الإرجاع</a></li>
+                    <li><a href="#contact">الأسئلة الشائعة</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>تابعينا على</h4>
+                <div class="social-icons">
+                    <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://tiktok.com" target="_blank" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="https://pinterest.com" target="_blank" aria-label="Pinterest"><i class="fa-brands fa-pinterest"></i></a>
+                    <a href="https://youtube.com" target="_blank" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom text-center">
+            <p>&copy; 2026 Glowly Beauty & More. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
